@@ -1,0 +1,10 @@
+.vehicleName{
+    margin-top: -200px;
+}
+.vehicleImage{
+    margin-top: -600px;
+    margin: auto;
+    border: 1px solid red;
+    padding:30px;
+ 
+}
