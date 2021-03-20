@@ -1,0 +1,17 @@
+body,
+html {
+  height: 100%;
+}
+.ride-section {
+  display: flex;
+  flex-wrap: wrap;
+  float: left;
+}
+.banner {
+  background-image: url("../../images/Bg.png");
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

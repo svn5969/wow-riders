@@ -1,57 +1,63 @@
-import logo from './logo.svg';
+import React, { createContext, useState } from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route,Link
 } from "react-router-dom";
-import Home from './Component/Home/Home';
-import Destination from './Component/Destination/Destination';
-import Blog from './Component/Blog/Blog';
-import Contract from './Component/Contract/Contract';
-import Login from './Component/Login/Login';
-import Header from './Component/Header/Header';
-import { createContext } from 'react';
+import Blog from './Components/Blog/Blog';
+import Contact from './Components/Contact/Contact';
+import Home from './Components/Home/Home';
+import Destination from './Components/Destination/Destination';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import { Nav, Navbar } from 'react-bootstrap';
+import Header from './Components/Header/Header';
+import NotFound from './Components/NotFound/NotFound';
+import FinalDestination from './Components/FinalDestination/FinalDestination';
+import SignIn from './Components/SignIn/SignIn';
 
-function App() {
- const pageContext = createContext()
+
+export const UserContext = createContext();
+
+function App(props) {
+
+  const [loggedinUser, setLoggedinUser] = useState({});
   return (
-    <pageContext.Provider>
-      <Router>
-        <div>
-          <Switch>
-            <Route exact path="/">
-            <Header></Header>
-            <Home></Home>
-            </Route>
-
-            <Route path="/home">
-             <Home></Home>
-            </Route>
-            <Route path="/destination">
-                <Destination></Destination>
-            </Route>
-
-            <Route path="/blog">
-             <Blog></Blog>
-            </Route>
-            <Route path="/contract">
-          <Contract></Contract>
-            </Route>
-            
-            <Route path="/login">
-          <Login></Login>
-            </Route>
-
-          
-
-
-          </Switch>
-        </div>
-      </Router>
-    </pageContext.Provider>
+    <UserContext.Provider value ={[loggedinUser, setLoggedinUser]}>
+  <Router>
+      <div>
+      <Header></Header> 
+        <Switch>
+          <Route path="/blog">
+            <Blog />
+          </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
+          <PrivateRoute path="/destination/:id">
+            <Destination />
+          </PrivateRoute >
+          <PrivateRoute path="/finalDestination">
+            <FinalDestination />
+          </PrivateRoute >
+         
+          <Route path="/signin">
+            <SignIn />
+          </Route>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route  path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+    </UserContext.Provider>
   );
 }
 
