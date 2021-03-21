@@ -12,7 +12,7 @@ console.log(loggedinUser);
 
             <Navbar collapseOnSelect expand="lg" bg="muted" variant="primary">
                 <Navbar.Brand ><img style={{ height: "60px"}} src={logo} alt="" /></Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Toggle style={{ backgroundColor: "skyblue"}}aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                     </Nav>

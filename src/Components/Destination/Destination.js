@@ -3,11 +3,13 @@ import { Button, Form } from 'react-bootstrap';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import map from '../../images/Map.png';
 import rideData from '../Data/Data';
+import Map from '../Map/Map';
 
 const Destination = (props) => {
     
     
-    
+    const {id} = useParams();
+    const history = useHistory();
     return (
 
         <div className="d-flex">
@@ -26,13 +28,14 @@ const Destination = (props) => {
                     </Button> */}
                     
                 </Form>
-                <Link to="/finalDestination">
-                    <button  className="btn btn-primary">Search</button>
-                    </Link>
+              
+                    <button onClick={()=>history.push(`/finalDestination/${id}`)}  className="btn btn-primary">Search</button>
+                    
             </div>
-            <div>
-                <img style={{height: '600px', marginLeft:"200px" , marginTop:"50px"}}src={map} alt=""/>
-            </div>
+            <div style={{marginLeft: '180px',marginTop: '150px'}}>
+            
+            <Map></Map>
+        </div>
         </div>
     );
 };   
